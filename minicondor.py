@@ -8,8 +8,7 @@ FNULL = open("temp_outputs.txt","w")
 def new_process(nextFile,command):
     global globalCounter
     globalCounter = globalCounter + 1
-    command.insert(1,nextFile)
-#    command = ["./analyze",nextFile,"Zll_histograms",str(globalCounter),"none","2","1","1"]
+    command = ["./analyze",nextFile,"Zll_histograms",str(globalCounter),"none","2","1","1"]
 #    print(command)
     p = subprocess.Popen(command,stdout = FNULL,stderr = subprocess.STDOUT)
     return p
@@ -39,11 +38,5 @@ def minicondor(fileList,command):
  #       print("pSpace=",len(pSpace))
 
 
-command = []
-if argc < 3:
-    print("Usage : minicondor <filelist> <commands>")
-    print("looper should take root file as first argument")
-else:
-    for i in range(2,argc):
-        command.append(i)
-        minicondor(filelist = sys.argv[1],command = command)
+command = [] #Future proofing
+minicondor(fileList = sys.argv[1],command = command)
