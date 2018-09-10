@@ -20,6 +20,8 @@ def minicondor(fileList,command):
 
     jobQueue = []
     for i in files:
+        if i[0] == "#":
+            continue
         jobQueue.append(i.rstrip("\n"))
 
     pSpace = [] #Process space
